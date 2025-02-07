@@ -48,14 +48,14 @@ def call_azure_gpt4(prompt):
         "messages": [{"role": "user", "content": prompt}],
         "temperature": 0.7,
         "max_tokens": 500,
-        "model": AZURE_DEPLOYMENT_NAME  # Correction : Azure OpenAI attend "model" et non "deployment_id"
+        "model": AZURE_DEPLOYMENT_NAME  
     }
 
     try:
         response = requests.post(AZURE_OPENAI_ENDPOINT, headers=headers, json=payload)
         response_data = response.json()
 
-        # Vérification de la réponse
+        
         if "choices" in response_data and len(response_data["choices"]) > 0:
             return response_data["choices"][0]["message"]["content"]
         else:
@@ -93,7 +93,7 @@ Réponds précisément à la question suivante en prenant en compte cette date :
 
     return call_azure_gpt4(prompt)
 
-# Test du script
+#tets
 if __name__ == "__main__":
     test_query = "Quels sont les événements marquants d'aujourd'hui ?"
     articles = search_articles(test_query)
